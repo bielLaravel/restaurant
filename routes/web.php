@@ -11,22 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 //Save and validate the book request
-Route::get('form', function () {
-    return view('child');
-});
-Route::get('menu', function () {
-    return view('menus');
-});
-Auth::routes();
+Route::get('form', 'publicWeb@returnCategories');
+
+Route::get('menus', 'menuEditor@returnDishTypes');
+
+Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/bookSave','BookingControll@saveBook');
-Route::get('/crudBook','BookingControll@returnBook');
-Route::get('/deleteBook/{id}','BookingControll@deleteBook');
-Route::get('/updateBook/{id}','BookingControll@updateBook');
 
+Route::get('/crudBook','BookControll@returnBook')->middleware('auth');;
+Route::post('bookPublic','BookingControll@generateTheBook');
+Route::get('getDishes/{id}','PublicWeb@getDishes');
+Route::resource('books', 'BookControll');
+Route::resource('dishes','dishesControl');
 

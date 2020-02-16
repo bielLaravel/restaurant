@@ -50,13 +50,18 @@ body {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">    
+
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
     <script src="{{ asset('js/sideBar.js') }}" defer></script>
     <script src="{{ asset('js/dashboard.js') }}" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -78,7 +83,7 @@ body {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="/biel/public/form">Public web</a>
+        <a class="nav-link" href="/backendXoriguer/public/form">Public web</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -99,18 +104,15 @@ body {
 <div class="bg-light border-right" id="sidebar-wrapper">
   <div class="sidebar-heading">Admin </div>
   <div class="list-group list-group-flush">
-    <a href="/biel/public/crudBook" class="list-group-item list-group-item-action bg-light">Books</a>
-    <a href="/biel/public/menu" class="list-group-item list-group-item-action bg-light">Menus</a>
-
+    <a href="/backendXoriguer/public/crudBook" class="list-group-item list-group-item-action bg-light">Books</a>
+    <a href="/backendXoriguer/public/menu" class="list-group-item list-group-item-action bg-light">Menus</a>
+    <a href="/backendXoriguer/public/menus" class="list-group-item list-group-item-action bg-light">Menu Editor</a>
   </div>
 </div>
 <div class="container">
 <div class="row">
 @yield('content')
 
-<script
-			  src="https://code.jquery.com/jquery-3.4.1.min.js"
-			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-			  crossorigin="anonymous"></script>
+
 </body>
 </html>

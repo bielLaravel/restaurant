@@ -10,121 +10,73 @@ use App\Book;
 class BookingControll extends Controller{
     
 
-    /*private function checkTableSpace($guests){
+    private function checkTableSpace($guests){
+        $maxGuestsOnline = 20;
+        $maxTablesOnline = 5;
         $tableNeed;
-        if($guests <= 4) $tableNeed= 1; 
+
+        if($guests <= 4) $tableNeed = 1; 
         else if($guests > 4 && $guests <= 8 ) $tableNeed= 2; 
         else if($guests >= 8 && $guests <= 12)$tableNeed= 3; 
         else if($guests >= 12 && $guests <= 16) $tableNeed= 4;
+        else if($guests >= 16 && $guests <= 20) $tableNeed = 5;
 
         return $tableNeed;
     }
+    public function checkIfSpace($tablesNeeded){
+        $tablesOccupy = DB::select("select count(tables) from bookReservation where mealType='$mealType' and date='$date'");
+
+        return $tablesOccupy;
+    }
     
-    
-    private function checkRestaurantSpace(){
-        $numberOfPersonBook = DB::select("SELECT COUNT('tables') FROM meal_type,book_list WHERE booklist.meal_type='$meal_type' and date='$date'");
+    public function generateTheBook(Request $request){
         $tablesNeed = $this->checkTableSpace($guests);
-        $totalSpaceToCheck =  $numberOfPersonBook +  $tablesNeed;
-       
-        //return de la nova taula mes les que i havien sha de comparar amv el maxim de taules
-        return $totalSpaceToCheck;
-   }
-    public function saveBooking(Request $request){
-         $clientIp = $request->ip();
-         $numberOfGuest = $request->input('person');
-         $max_guests = 4;
-         $returnMessage;
-         
-        //Firts we check the ip
-         if(!($this->ipControl($clientIp))){ 
-             //validate the data
-            $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'lastname' => 'required',
-                'phone' => 'required',
-                'email' => 'required',
-                'hour' => 'required',
-                'person' => 'required',
-                'date' => 'required',     
-                'message' => 'required',
+        $isSpace = $this->checkIfSpace($tablesNeeded);
+        $errorMessage = 'No tenim suficient lloc per la data en que has intentat reserva';
+        //Comprovarem si la ip esta en la llista negra
+        if(!$this->ipControl()){
+            //comprovem si ha lloc per les persones indicades
+            if($isSpace){
+                
+                if($guestsToBook > 20){
+                    return view('books.tableBook')->with('errorMesage','hauras de trucar per realitzar aquesta resercva');
+                } 
+                else if($guestsToBook <= 4){ //Si son menys de 4 o quatre podran realitzar la reserva inmediatament
+                
+                    //guardem la reserca  status=validate retornem un missatge
+                     BookingControll::saveBook(); 
+                    //senvia correu de validacio correcta
 
-            ]);
-            if ($validator->fails()) $returnMessage =  redirect()->back()->with('errorMessage', 'Cannot make the request');
-           
-            else {
-             // tables for 4 guest
-             $resultCreate = $this->saveBook();
-             if($resultCreate) $returnMessage = redirect()->back()->with('message','Create the book with succefull'.$id);
-             
-            }
     
-            }else $returnMessage = 'you have done a request today';
-
-            return $returnMessage;  
-        }    
-       
-       
-        public function ipControl(  $clientIp ){
-            //first check if the ip is already in the black list
-            $ipToCheck = DB::table('blackListIp')->where('ip', $clientIp);
-    
-            return $result = $ipToCheck;
-        }
-        public function saveBook(Request $request){
-            $status = ($request->input('persons') <= 4) ? 1 : 0;
-          
-            DB::table('booksReservation')->insert(
-                ['name' =>  $request->input('name'),'date' => $request->input('date'),
-                'phone'=> $request->input('phone'), 'email'=>$request->input('email'),
-                'hour'=>$request->input('time'),'persons'=>$request->input('persons'),'status'=>$status]
-            );   
-  
-        }*/
-        public function updateBook(Request $request, $id){
-        
-            if(Book::find($id)){
-                $name= $request->input('name');
-                $persons = $request->input('persons');
-                $date = $request->input('date');
-                $email = $request->input('email');
-                $hour = $request->input('hour');
-                $state = (int) $request->input('state');
-                DB::update('update booksReservation set name = ?,persons=?,status=?,date=?,email=?,hour=? where id = ?',[$name,$persons,$state,$date,$email,$hour,$id]);
-             } 
-         return redirect()->back()->with('message','Update the book with the id '.$id);
-        }
-         public function deleteBook(Request $request, $id){
-            $message;
-            if (Book::where('id', $id)->first()){                
-                $bookToDelete = Book::find($id);
-                if($bookToDelete->delete()) $message  = redirect()->back()->with('message','Delete the book with the id '.$id);
-                //return $result = ($bookToDelete->delete()) ? "The books is delete succefuly" : "The books is delete succefuly";
-            }
-            return redirect()->back()->with('errorMessage','something is bad');
-        }
-        public function returnBook(){
-            $books =  DB::table('booksReservation')->get();
-
-            return view('crudBook')->with('books',$books);
-        }
-}
-
-    /* 
-
-   
-    
-    TOTES LES RESERVES ENCARA QUE ESTIGUIN VALIDADES ES PODRAN REALITZAR UN CRUD. 
-        CANCEL: agafarem id i enviarem un correu a la persona dien que la reserva a estat cancelada canviarem lestat.
-        ACCEPT: agafarem id i enviarem un correu a la persona dien que la reserva a estat aceptada canviarem lestat.
-        
-        if(the request is accept){
-            change the state to validate
-            send the email
+                }
+                else if($guestsToBook > 4){ //Si son mes de quatre la reserva es realitzara pero tindra que ser validada per telefon o email
+                   
+                    BookingControll::saveBook(); 
+                    //senvia correu en validacio
+                    return 'sha de validar manualment';
+              }
         }else{
-            change the state to invalid
-            send the email
 
         }
+            
+    }
+        else{
+            return 'message';
+        }
+    }
+    public function ipControl(){
+        //first check if the ip is already in the black list  
+        $clientIp = $request->ip();
+        $ipToCheck = DB::table('blackListIp')->where('ip', $clientIp);
+
+        return $result = $ipToCheck;
+    }
+    private static function saveBook(){
+        $dataToInsert = $request->all();
+        Books::insert($dataToInsert);
+        $books =  DB::table('booksReservation')->get();
+
+    }
         
-        
-*/
+
+}

@@ -1,10 +1,11 @@
 @extends('layouts.adminLayout')
-@include('modals.createNewMenu')
+@include('menus.modalCreateDish')
+
 
 @section('content')
 <style>
 #searchForm{
-  margin-left: 435px !important;
+  margin-left: 309px !important;
 }
 </style>
 <div class="table-responsive">
@@ -24,31 +25,21 @@
   </button>
 </div>
 @endif
-</div>
-<div class="row m-3">
-    <a href="" class=" m-2  btn btn-success" data-toggle="modal" data-target="#createMenu">Create new menu</a>
-    <a href="" class="m-2 btn btn-danger ">Delete selected</a>
-    <a href="" id="searchForm"class="m-2  btn border-danger text-danger ">PDF</a>
-    <a href="" class="m-2  btn border-info text-info">IMPRESORA</a>
-
 
 </div>
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>#</th>
-      <th class="th-lg">menu name</th>
-      <th class="th-lg">total Dishes</th>
-      <th class="th-lg">status</th>
-      <th class="th-lg">Delete / Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-  </tbody>
-</table>
+<div class="row col-md-12 m-2">
+    <a href="" class=" m-2  btn btn-success" data-toggle="modal" data-target="#modalCreateDish">Create new Dish</a>
+    <a href="#" id="deleteAll" class="m-2 btn btn-danger ">Delete selected</a>
+   
+</div>
+
+@include('menus.dishAdd',['dishes'=>$dishes])
 
 
 
 @endsection
+
+
+
+<!-- -->
+

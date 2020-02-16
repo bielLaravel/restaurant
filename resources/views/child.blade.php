@@ -732,6 +732,8 @@ figure {
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/dashboard.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -791,145 +793,12 @@ figure {
 
                 <div class="col-md-12  text-center" id="menu-flters">
                     <ul>
-                        <li><a class="filter active" data-filter=".breakfast">Menu cap de setmana</a></li>
-                      
+                        @foreach($categories as $categorie)
+                        <li><a class="filter  categories" id="{{$categorie->dish_categorie}}">{{$categorie->dish_categorie}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
-
-                <div id="menu-wrapper">
-
-                    <div class="breakfast menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="breakfast menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="breakfast menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="breakfast menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="lunch menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="lunch menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="lunch menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="lunch menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="lunch menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="dinner menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="dinner menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-
-                    <div class="dinner menu-restaurant">
-                        <span class="clearfix">
-                            <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food
-                                Item
-                                Name</a>
-                            <span style="left: 166px; right: 44px;" class="menu-line"></span>
-                            <span class="menu-price">$20.99</span>
-                        </span>
-                        <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-                    </div>
-                </div>
+                @include('publicMenus',['dishes'=>$dishes])          
 
             </div>
         </div>
@@ -1004,7 +873,7 @@ figure {
         <div class="container">
             <div class="row">
             <div class="col-md-12 text-center marb-35">
-                    <h1 class="header-h">Menu List</h1>
+                    <h1 class="header-h">Book your table</h1>
                     <p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
                         nonummy
                         <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p>
@@ -1017,14 +886,14 @@ figure {
         <div class="container">
             <div class="row">
                 <div class="col-md-12 probootstrap-animate">
-                    <form method="get" class="probootstrap-form" action="/biel/public/bookSave">
+                    <form >
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="date">Persons</label>
                                     <div class="form-field">
                                         <i class="icon icon-calendar"></i>
-                                        <input type="text" name="persons" id="date" placeholder="Number of guests" class="form-control">
+                                        <input type="number" name="persons" id="persons" placeholder="Number of guests" required  class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -1033,7 +902,7 @@ figure {
                                     <label for="date">Date</label>
                                     <div class="form-field">
                                         <i class="icon icon-calendar"></i>
-                                        <input type="text" name="date" id="date" placeholder="Date" class="form-control">
+                                        <input type="date" name="date" id="date" placeholder="Date" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -1043,11 +912,12 @@ figure {
                                     <label for="time">Time</label>
                                     <div class="form-field">
                                         <i class="icon icon-clock"></i>
-                                        <input type="text" name="time" id="time" placeholder="time" class="form-control">
+                                        <input type="time" name="time" id="time" placeholder="time" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                         <!-- END row -->
                         <div class="row">
                             <div class="col-md-4">
@@ -1055,7 +925,7 @@ figure {
                                     <label for="name">Name</label>
                                     <div class="form-field">
                                         <i class="icon icon-user2"></i>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Your full name">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Your full name" required>
                                     </div>
                                 </div>
                             </div>
@@ -1065,7 +935,7 @@ figure {
                                     <div class="form-field">
                                         <i class="icon icon-mail"></i>
                                         <input type="text" name="email" id="email" class="form-control"
-                                            placeholder="Your email address">
+                                            placeholder="Your email address" required>
                                     </div>
                                 </div>
                             </div>
@@ -1074,19 +944,38 @@ figure {
                                     <label for="phone">Phone</label>
                                     <div class="form-field">
                                         <i class="icon icon-phone"></i>
-                                        <input type="text" name="phone" id="phone" class="form-control" placeholder="Your phone">
+                                        <input type="text" name="phone" id="phone" class="form-control" placeholder="Your phone" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                   
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="phone">Menu type</label>
+                                    <select id="#mealType" class="form-control form-control-sm">
+                                         <option value="1">Esmorzar</option>
+                                         <option value="2">Dinar</option>
+                                         <option value="3">Sopar</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4">
-                                <input type="submit" name="submit" id="submit" value="Submit"
+                                <input type="" name="" id="submitBook" value="Submit"
                                     class="btn btn-lg btn-warning btn-block">
                             </div>
                         </div>
-
                     </form>
+                    <div id="alertBook" class="alert alert-primary" role="alert">
+                        This is a primary alert—check it out!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

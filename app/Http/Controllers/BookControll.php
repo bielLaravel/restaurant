@@ -30,7 +30,7 @@ class BookControll extends Controller
          $books =  DB::table('booksReservation')->get();
          return view('books.tableBook')->with('books',$books);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -93,7 +93,7 @@ class BookControll extends Controller
 
     public function returnBook(){
         $books =  DB::table('booksReservation')->get();
-
-        return view('books.crudBook')->with('books',$books);
+        $categories =  DB::table('food_categories')->get();
+        return view('books.crudBook',['books'=>$books,'categories'=>$categories]);
     }
 }

@@ -711,13 +711,22 @@ figure {
     background-image: url('https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?cs=srgb&dl=burger-and-vegetables-placed-on-brown-wood-surface-1565982.jpg&fm=jpg ');
     background-size: cover;
     height: 700px;
-    background-color:red;
 }
 #proves{
     margin-top:150px !important;
 }
 .card{
  width:25% !important;
+}
+#navXuri{
+  background-color:transparent !important;
+      box-shadow: none;
+      color: white;
+      font-size: 20px;
+}
+#navXuri2{
+  
+      font-size: 27px;
 }
 </style>
 
@@ -758,16 +767,30 @@ figure {
     
     <div class="header">
     
-    <nav id="nav" class="navbar text-dark justify-content-between">
-        <a class="text-white font-weight-bold display-4 ml-3 mt-4" href="#">CAL XORIGUER</a>
-        <form class="form-inline my-1 mt-4 mr-5">
-            <button class="borderBTN btn  text-white my-0" type="text">home</button>
-            <button class="borderBTN btn btn-outline-white  text-white my-0" type="text">menu</button>
-            <button class="borderBTN btn btn-outline-white  text-white my-0" type="text">book</button>
-            <button class=" borderBTN btn btn-outline-white   text-white my-0" type="text">contact</button>
+  
+    <nav id="navXuri" class="navbar text-white navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand " href="#"><span class="text-white display-5" id="navXuri2">Cal xoriguer</span></a>
+  <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Menu</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Book</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Contact</a>
+      </li>
 
-        </form>
-    </nav>
+    </ul>
+  </div>
+</nav>
         <div id="proves" class="col-md-12 position-absolute">
             <div class="container">
                 <div class="row ">
@@ -775,350 +798,20 @@ figure {
                         <h1 class="text-white display-3">EAT REAL FOOD</h1>
                     </div>
                     <div class="col-md-12 ml-2">
-                        <button type="button" class="btn btn-light">Book now</button>
-                        <button id="button1" type="button" class="btn text-white">khow more</button> </div>
+                        <button type="button" class="btn btn-light" onClick="window.location='#formPublic'">Book now</button>
+                        <button id="button1" type="button" class="btn text-white" onClick="window.location='#contactUS'">khow more</button> </div>
                 </div>
             </div>
         </div>
     </div>
-    <section id="menu-list" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center marb-35">
-                    <h1 class="header-h">Menu List</h1>
-                    <p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                        nonummy
-                        <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p>
-                </div>
+@include('menuCategories')  
+@include('publicImages')
+@include('bookingPublic')
+@include('about')
+@include('contactUs')
+@include('footer')
 
-                <div class="col-md-12  text-center" id="menu-flters">
-                    <ul>
-                        @foreach($categories as $categorie)
-                        <li><a class="filter  categories" id="{{$categorie->dish_categorie}}">{{$categorie->dish_categorie}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-                @include('publicMenus',['dishes'=>$dishes])          
-
-            </div>
-        </div>
-    </section>
-    <div class="row">
-        <div class="col-md-12">
-
-            <div id="mdb-lightbox-ui"></div>
-
-            <div id="flex-img" class="mdb-lightbox no-margin">
-
-                <figure class="col-md-4">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(117).jpg"
-                        data-size="1600x1067">
-                        <img alt="picture"
-                            src="https://images.pexels.com/photos/264537/pexels-photo-264537.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                            class="img-fluid">
-                    </a>
-                </figure>
-
-                <figure class="col-md-4">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(98).jpg"
-                        data-size="1600x1067">
-                        <img alt="picture"
-                            src="https://images.pexels.com/photos/264537/pexels-photo-264537.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                            class="img-fluid" />
-                    </a>
-                </figure>
-
-                <figure class="col-md-4">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg"
-                        data-size="1600x1067">
-                        <img alt="picture"
-                            src="https://images.pexels.com/photos/264537/pexels-photo-264537.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                            class="img-fluid" />
-                    </a>
-                </figure>
-
-                <figure class="col-md-4">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(123).jpg"
-                        data-size="1600x1067">
-                        <img alt="picture"
-                            src="https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                            class="img-fluid" />
-                    </a>
-                </figure>
-
-                <figure class="col-md-4">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(118).jpg"
-                        data-size="1600x1067">
-                        <img alt="picture"
-                            src="https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                            class="img-fluid" />
-                    </a>
-                </figure>
-
-                <figure class="col-md-4">
-                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(128).jpg"
-                        data-size="1600x1067">
-                        <img alt="picture"
-                            src="https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                            class="img-fluid" />
-                    </a>
-                </figure>
-
-            </div>
-
-        </div>
-    </div>
-    <!-- Grid row -->
-    <section class="probootstrap-section mt-5">
-        <div class="container">
-            <div class="row">
-            <div class="col-md-12 text-center marb-35">
-                    <h1 class="header-h">Book your table</h1>
-                    <p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                        nonummy
-                        <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="" class="probootstrap-section mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 probootstrap-animate">
-                    <form >
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="date">Persons</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-calendar"></i>
-                                        <input type="number" name="persons" id="persons" placeholder="Number of guests" required  class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="date">Date</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-calendar"></i>
-                                        <input type="date" name="date" id="date" placeholder="Date" class="form-control" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="time">Time</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-clock"></i>
-                                        <input type="time" name="time" id="time" placeholder="time" class="form-control" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- END row -->
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-user2"></i>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Your full name" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-mail"></i>
-                                        <input type="text" name="email" id="email" class="form-control"
-                                            placeholder="Your email address" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-phone"></i>
-                                        <input type="text" name="phone" id="phone" class="form-control" placeholder="Your phone" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                   
-                        <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="phone">Menu type</label>
-                                    <select id="#mealType" class="form-control form-control-sm">
-                                         <option value="1">Esmorzar</option>
-                                         <option value="2">Dinar</option>
-                                         <option value="3">Sopar</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-4">
-                                <input type="" name="" id="submitBook" value="Submit"
-                                    class="btn btn-lg btn-warning btn-block">
-                            </div>
-                        </div>
-                    </form>
-                    <div id="alertBook" class="alert alert-primary" role="alert">
-                        This is a primary alert—check it out!
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- ABOUT US-->
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-4">
-            </div>
-        </div>
-    </div>
-</div>
- 
-
-
-    <!-- / contact -->
-    <div class="container">
-    <div class=" py-5">
-  <div class="container py-5">
-    <div class="row align-items-center mb-5">
-      <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
-        <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-      <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://ecocesta.com/wp-content/uploads/2018/11/logo-300x250-ok.png" alt="" class="img-fluid mb-4 mb-lg-0"></div>
-    </div>
-    <div class="row align-items-center">
-      <div class="col-lg-5 px-5 mx-auto"><img src="https://shopichigo.com/wp-content/uploads/2019/06/vegan-logo-text-only.png" alt="" class="img-fluid mb-4 mb-lg-0"></div>
-      <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-        <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<section id="bookBackground" class="probootstrap-section mt-5" data-section="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 text-center probootstrap-animate">
-                    <div class="probootstrap-heading dark">
-                        <h1 id="textContact" class="primary-heading text-warning mt-5">Contact</h1>
-                        <h3 class="secondary-heading">Let's Chat</h3>
-                    </div>
-                    <p>Voluptatibus quaerat laboriosam fugit non Ut consequatur animi est molestiae enim a
-                        voluptate
-                        totam natus modi debitis dicta impedit voluptatum quod sapiente illo saepe explicabo
-                        quisquam
-                        perferendis labore et illum suscipit</p>
-                </div>
-                <div class="col-md-6 col-md-push-1 probootstrap-animate">
-                    <form method="post" class="probootstrap-form mt-5">
-                        <div class="form-group">
-                            <label for="c_name">Your Name</label>
-                            <div class="form-field">
-                                <input type="text" id="c_name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="c_email">Your Email</label>
-                            <div class="form-field">
-                                <input type="text" id="c_email" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="c_message">Your Message</label>
-                            <div class="form-field">
-                                <textarea name="c_message" id="c_message" cols="10" rows="5"
-                                    class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class=" form-group">
-                            <input type="submit" name="c_submit" id="c_submit" value="Send Message"
-                                class="btn  text-dark btn-warning btn-lg">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 <!-- Footer -->
-<footer class="page-footer text-center font-small cyan bg-dark p-5">
 
-  <!-- Footer Elements -->
-  <div class="container">
-
-    <!-- Grid row-->
-    <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-12 py-5">
-        <div class="mb-5 flex-center">
-
-          <!-- Facebook -->
-          <a class="fb-ic text-white">
-            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!-- Twitter -->
-          <a class="tw-ic text-white">
-            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!-- Google +-->
-          <a class="gplus-ic text-white">
-            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!--Linkedin -->
-          <a class="li-ic text-white">
-            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!--Instagram-->
-          <a class="ins-ic text-white">
-            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-          </a>
-          <!--Pinterest-->
-          <a class="pin-ic text-white">
-            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-          </a>
-        </div>
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row-->
-
-  </div>
-  <!-- Footer Elements -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3 bg-dark text-white ">© 2020 Copyright:
-  </div>
-  <!-- Copyright -->
-
-</footer>
 <!-- Footer -->
 </body>
-@if (session('message'))
-<div class="alert alert-success">
-    {{ session('message') }}
-</div>
-@endif
-@if (session('errorMessage'))
-<div class="alert alert-danger">
-    {{ session('errorMessage') }}
-</div>
-@endif

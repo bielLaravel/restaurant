@@ -64,6 +64,8 @@ body {
 			  crossorigin="anonymous"></script>
     <script src="{{ asset('js/sideBar.js') }}" defer></script>
     <script src="{{ asset('js/dashboard.js') }}" defer></script>
+    <script src="{{ asset('js/validator.js') }}" defer></script>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -91,7 +93,8 @@ body {
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Perfil</a>
-          <a class="dropdown-item" href="#">Log out</a>
+          <a class="dropdown-item" href="{{ url('/logout') }}">Log out</a>
+         
           <div class="dropdown-divider"></div>
         </div>
       </li>

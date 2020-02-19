@@ -22,8 +22,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/crudBook','BookControll@returnBook')->middleware('auth');;
-Route::post('bookPublic','BookingControll@generateTheBook');
 Route::get('getDishes/{id}','PublicWeb@getDishes');
+
+Route::get('makeReservation','PublicWeb@makeReservation');
+
+
 Route::resource('books', 'BookControll');
 Route::resource('dishes','dishesControl');
 
+Route::get('contact-us', 'ContactUSController@contactUS');
+Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+
+Route::get('/logout', 'Auth\LoginController@logout');

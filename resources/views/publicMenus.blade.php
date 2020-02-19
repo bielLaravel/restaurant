@@ -1,3 +1,4 @@
+
 <div id="menu-wrapper">
 @foreach($dishes as $dish)
     <div class="breakfast menu-restaurant">
